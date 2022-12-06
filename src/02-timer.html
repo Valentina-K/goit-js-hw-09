@@ -5,12 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Countdown timer</title>
     <link rel="stylesheet" href="css/common.css" />
+    <!-- <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://npmcdn.com/flatpickr/dist/themes/dark.css"
+    /> -->
+    <style type="text/css">
+      button {
+        padding: 5px 15px;
+      }
+      #datetime-picker {
+        padding: 5px;
+      }
+      .timer {
+        display: flex;
+        justify-content: left;
+        margin-top: 20px;
+      }
+      .field:not(:last-child) {
+        margin-right: 15px;
+      }
+      span {
+        display: block;
+        text-align: center;
+      }
+      .label {
+        text-transform: uppercase;
+        font-size: 20px;
+        font-weight: 500;
+      }
+      .value {
+        font-size: 32px;
+        font-weight: 500;
+      }
+    </style>
   </head>
   <body>
     <p><a href="index.html">Go back</a></p>
 
     <input type="text" id="datetime-picker" />
-    <button type="button" data-start>Start</button>
+    <button type="button" disabled data-start>Start</button>
 
     <div class="timer">
       <div class="field">
