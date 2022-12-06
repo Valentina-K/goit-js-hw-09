@@ -3,6 +3,7 @@ import flatpickr from "flatpickr";
 // Дополнительный импорт стилей
 import "flatpickr/dist/flatpickr.min.css";
 import "flatpickr/dist/themes/material_green.css";
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const options = {
   enableTime: true,
@@ -17,35 +18,35 @@ const options = {
 const btnStart = document.querySelector('[data-start]');
 const timerFields = document.querySelectorAll('.value');
 let dateStartMs = null;
-
+console.log(Notify);
 flatpickr("#datetime-picker", options);
 btnStart.addEventListener('click', onBtnClick); 
 
 function onBtnClick() {
     btnStart.setAttribute('disabled','disabled');  
     const intervalId = setInterval(() => {
-        if (dateStartMs > 0) {
-            dateStartMs -= 1000;        
-        f(convertMs(dateStartMs));
+        dateStartMs -= 1000;
+        if (dateStartMs > 0) {                    
+            renderingTimeData(convertMs(dateStartMs));
         }
         else {
             clearInterval(intervalId);
-            f(convertMs(0));
+            renderingTimeData(convertMs(0));
         }
     }, 1000);    
 }
   
 function closePicker(selectedDate, defaultDate) {
     if (selectedDate < defaultDate) {
-          alert('Please choose a date in the future')
-          return;
+        Notify.warning('Please choose a date in the future',{position:'center-top'});
+        return;
     }
     btnStart.removeAttribute('disabled');
     dateStartMs = selectedDate - defaultDate;
-    f(convertMs(dateStartMs));       
+    renderingTimeData(convertMs(dateStartMs));       
 }
 
-function f(data) {
+function renderingTimeData(data) {
     //console.log('from f', data);
     timerFields[0].textContent = addLeadingZero(data.days);
     timerFields[1].textContent = addLeadingZero(data.hours);
