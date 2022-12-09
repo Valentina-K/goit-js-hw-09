@@ -28,14 +28,15 @@ function onSubmit(evt) {
   }
 }
 
-function createPromise(position, delay) {
-  console.log(position, delay);
-  const shouldResolve = Math.random() > 0.3;
+function createPromise(position, delay) {  
   return new Promise((resolve, reject) => {
-    if (shouldResolve) {
+    const shouldResolve = Math.random() > 0.3;
+    setTimeout(() => {
+      if (shouldResolve) {
       resolve({position, delay});
-    } else {
-      reject({position, delay});
-    }
+      } else {
+        reject({position, delay});
+      }
+    }, delay);    
   });  
 }
