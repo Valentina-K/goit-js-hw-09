@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Promise generator</title>
     <link rel="stylesheet" href="css/common.css" />
-    <style>
-      label {
+    <style type="text/css">
+      form {
+        display: flex;
+      }
+      label:not(:last-child) {
+        margin-right: 20px;
+      }
+      span {
         display: block;
       }
     </style>
@@ -16,15 +22,15 @@
 
     <form class="form">
       <label>
-        First delay (ms)
+        <span>First delay (ms)</span>
         <input type="number" name="delay" required />
       </label>
       <label>
-        Delay step (ms)
+        <span>Delay step (ms)</span>
         <input type="number" name="step" required />
       </label>
       <label>
-        Amount
+        <span>Amount</span>
         <input type="number" name="amount" required />
       </label>
       <button type="submit">Create promises</button>
