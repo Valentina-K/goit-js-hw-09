@@ -18,7 +18,7 @@ const options = {
 const btnStart = document.querySelector('[data-start]');
 const timerFields = document.querySelectorAll('.value');
 let dateStartMs = null;
-console.log(Notify);
+
 flatpickr("#datetime-picker", options);
 btnStart.addEventListener('click', onBtnClick); 
 
